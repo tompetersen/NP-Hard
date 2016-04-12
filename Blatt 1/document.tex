@@ -1,0 +1,42 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{listings} 
+ \definecolor{lightgrey}{rgb}{0.90,0.90,0.90}
+\lstset{language=Java, backgroundcolor=\color{lightgrey},  numbersep=5pt, tabsize=3}
+ \usepackage{lineno}
+\title{Lösungsstrategien für NP-schwere Probleme}
+\begin{document}
+\section*{NP-schwere Probleme Aufgabenblatt 1}
+\subsubsection*{Thomas Maier	(6319878)}
+\subsubsection*{Autor2	(Matrikelnr)}
+\subsubsection*{Autor3	(Matrikelnr)}
+\subsubsection*{Autor4	(Matrikelnr)}
+
+\subsection*{Aufgabe 1}
+
+\subsubsection*{a)}
+Zu erst wird gezeigt, dass 4D-Matching in NP liegt. Dazu muss gezeigt werden, dass ein perfektes Matching in polynomieller Zeit verifiziert werden kann. Dies ist Möglich, indem geprüft wird ob jedes Element genau einmal in der Tupelmenge auftaucht.
+\\\\
+Nun bleibt zu zeigen, dass 4D-Matching auch NP-Vollständig ist. Dazu wird das Problem auf das 3D-Matching wie folgt reduziert. Das Ziel ist es ein perfektes Matching der folgenden vier Mengen $A, B, C, D$ zu finden. Dafür wird zunächst versucht ein perfektes 3D-Matching $T$ zwischen den Mengen $A,B,C$ zu finden. Ist dies nicht möglich, kann auch kein perfektes 4D-Matching gefunden werden, da ein solches durch das Entfernen des letzten Elementes eines jeden Tupels auf ein perfektes 3D-Matching zurückgeführt werden könnte.  Nachdem also ein solches perfektes 3D Matching gefunden wurde, wird jedem Tupel aus $T$ ein Element aus $D$ zugeordnet. Wenn jedem Element aus D genau ein Tupel zugeordnet werden kann, erhält man dadurch ein perfektes 4D-Matching.
+
+\subsubsection*{b)}
+$k$-CLIQUE ist für jedes $2 < k < |V|$ NP-Vollständig. 
+\\\\
+Beweis: $k$-Clique kann wie folgt auf Independet-Set reduziert werden.
+Zu jedem Graphen $G=(V,E)$ wird der komplementäre Graph $G^*=(V^*,E^*)$ erzeugt, wobei $V^*=V$ und $e \in E^*$ genau dann, wenn $e \notin E$ gilt. Anschließend wird auf dem Graphen $G^*$ Indipendent Set ausgeführt. Wenn nun eine unabhängige Menge der größe $k$ in $G^*$ gefunden wird, muss es auch einen vollständigen Graphen der größe $k$ in $G$ geben.
+Für $k=|V|$ wird geprüft, ob der Graph $G$ vollständig ist. Dies ist jedoch in $P$ möglich. Da nicht bekannt ist ob $P=NP$ gilt kann keine Aussage darüber getroffen werden, ob $k$-Clique auch für $k=|V|$ $NP$ vollständig ist. Ähnliches gilt für $k=2$. In diesem Fall wird geprüft, ob der Graph $G$ eine Kante enthält.
+
+\subsection*{Aufgabe 2}
+\subsubsection*{a)}
+Um eine Menge $H$ in polynomieller Zeit als Hitting Set zu verifizieren wird $H$ als Zertifikat verwendet.
+Zunächst wird geprüft ob $|H|\le k$ gilt. Als nächstes wird geprüft, ob $|H|\subseteq A$ gilt und zum Schluss wird geprüft, ob $H \cap B_i \neq \emptyset$ für jedes $i \in {1,...,m}$ gilt.
+Diese drei Prüfungen liegen in polynomieller Laufzeit. Somit liegt Hitting Set in NP.
+
+\subsubsection*{b)}
+Vertex Cover
+\end{document}
