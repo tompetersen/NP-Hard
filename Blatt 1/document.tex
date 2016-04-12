@@ -33,9 +33,14 @@
 \subsection*{Aufgabe 1}
 
 \subsubsection*{a)}
-Zu erst wird gezeigt, dass 4D-Matching in NP liegt. Dazu muss gezeigt werden, dass ein perfektes Matching in polynomieller Zeit verifiziert werden kann. Dies ist Möglich, indem geprüft wird ob jedes Element genau einmal in der Tupelmenge auftaucht.
+Zunächst formulieren wir das 4D-Matching-Problem:\\
+\textbf{Eingabe:} Disjunkte Mengen $A$, $B$, $C$ und $D$ mit $|A| = |B| = |C| = |D| = n$ sowie eine Menge $T \subseteq A \times B \times C \times D$ von Tripeln.\\
+\textbf{Frage:} Gibt es eine Menge von $n$ Tripeln in $T$, sodass jedes Element aus $A \cup B \cup C \cup D$ in genau einem dieser Tripel vorkommt?
 \\\\
-Nun bleibt zu zeigen, dass 4D-Matching auch NP-Vollständig ist. Dazu wird das Problem auf das 3D-Matching wie folgt reduziert. Das Ziel ist es ein perfektes Matching der folgenden vier Mengen $A, B, C, D$ zu finden. Dafür wird zunächst versucht ein perfektes 3D-Matching $T$ zwischen den Mengen $A,B,C$ zu finden. Ist dies nicht möglich, kann auch kein perfektes 4D-Matching gefunden werden, da ein solches durch das Entfernen des letzten Elementes eines jeden Tupels auf ein perfektes 3D-Matching zurückgeführt werden könnte.  Nachdem also ein solches perfektes 3D Matching gefunden wurde, wird jedem Tupel aus $T$ ein Element aus $D$ zugeordnet. Wenn jedem Element aus D genau ein Tupel zugeordnet werden kann, erhält man dadurch ein perfektes 4D-Matching.
+Nun zeigen wir, dass 4D-Matching in NP liegt. Dazu muss gezeigt werden, dass ein perfektes Matching in polynomieller Zeit verifiziert werden kann. Dies ist möglich, indem geprüft wird, ob jedes Element genau einmal in der Tupelmenge auftaucht.
+
+Nun zeigen wir, dass das 4D-Matching-Problem NP-vollständig ist, also dass 3D-Matching $\leq_p$ 4D-Matching gilt. Wir reduzieren dazu das 3D-Matching-Problem auf das 4D-Matching-Problem. Wir zeigen nun eine Konstruktion, welche ein korrektes Matching in 3D auf ein korrektes Matching in 4D, sowie ein falsches Matching in 3D auf ein falsches Matching in 4D abbildet. Dazu verbinden wir die Mengen $C$ und $D$ mithilfe einer bijektiven Abbildung. Man könnte zum Beispiel die Elemente der beiden Mengen jeweils nach einem bestimmten Kriterium sortieren und dann die jeweils $i$-ten Elemente in der Abbildung verbinden (für $i \in \{1,\dots,n\}$). Gegeben sei nun ein perfektes 3D-Matching für die Mengen $A$, $B$ und $C$. Alle Elemente der genannten Mengen sind also in genau einem Tupel enthalten. Nach unserer Konstruktion eines 4D-Matchings ist wegen der Bijektivität in dem Matching genau einmal jedes Element der Menge $D$ vorhanden. Ein falsches Matching in 3D trifft entweder nicht alle Elemente der Mengen $A$ oder $B$, oder nicht alle Elemente aus der Menge $C$ und damit auch der Menge $D$. Somit ist gezeigt, dass sich das 3D-Matching-Problem auf das 4D-Matching-Problem reduzieren lässt, was bedeutet, dass 4D-Matching NP-vollständig ist.
+
 
 \subsubsection*{b)}
 $k$-CLIQUE ist für jedes $2 < k < |V|$ NP-Vollständig. 
