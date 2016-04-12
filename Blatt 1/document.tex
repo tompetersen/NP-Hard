@@ -45,15 +45,18 @@ Nun zeigen wir, dass das 4D-Matching-Problem NP-vollständig ist, also dass 3D-M
 \subsubsection*{b)}
 $k$-CLIQUE ist für jedes $2 < k < |V|$ NP-Vollständig. 
 \\\\
-Beweis: $k$-Clique kann wie folgt auf Independent-Set reduziert werden.
-Zu jedem Graphen $G=(V,E)$ wird der komplementäre Graph $G^*=(V^*,E^*)$ erzeugt, wobei $V^*=V$ und $e \in E^*$ genau dann, wenn $e \notin E$ gilt. Anschließend wird auf dem Graphen $G^*$ Indipendent Set ausgeführt. Wenn nun eine unabhängige Menge der größe $k$ in $G^*$ gefunden wird, muss es auch einen vollständigen Graphen der größe $k$ in $G$ geben.
-Für $k=|V|$ wird geprüft, ob der Graph $G$ vollständig ist. Dies ist jedoch in $P$ möglich. Da nicht bekannt ist ob $P=NP$ gilt kann keine Aussage darüber getroffen werden, ob $k$-Clique auch für $k=|V|$ $NP$ vollständig ist. Ähnliches gilt für $k=2$. In diesem Fall wird geprüft, ob der Graph $G$ eine Kante enthält.
+Beweis: Zunächst zeigen wir wieder, dass das Problem in NP liegt. Ist eine k-elementige Menge von Knoten als Lösung gegeben, so kann einfach überprüft werden, ob zwischen jedem der gegebenen Knoten eine Kante existiert. Somit kann eine Lösung in polynomieller Zeit verifiziert werden.\\
+Nun wird eine Reduzierung vorgenommen. Hierzu kann $k$-Clique wie folgt auf Independent-Set reduziert werden. Zu jedem Graphen $G=(V,E)$ wird der komplementäre Graph $G^*=(V^*,E^*)$ erzeugt, wobei $V^*=V$ und $e \in E^*$ genau dann, wenn $e \notin E$ gilt. Anschließend wird auf dem Graphen $G^*$ Independent Set ausgeführt. Wenn nun eine unabhängige Menge der Größe $k$ in $G^*$ gefunden wird, muss es auch einen vollständigen Graphen der Größe $k$ in $G$ geben.
+Für $k=|V|$ wird geprüft, ob der Graph $G$ vollständig ist. Dies ist jedoch in $P$ möglich. Da nicht bekannt ist ob $P=NP$ gilt kann keine Aussage darüber getroffen werden, ob $k$-Clique auch für $k=|V|$ NP-vollständig ist. Ähnliches gilt für $k=2$. In diesem Fall wird geprüft, ob der Graph $G$ eine Kante enthält.
+Für $k=1$ ist die Antwort trivialerweise immer ja, denn jeder einzelne Knoten ist ein vollständiger Subgraph von $G$.
 
 \subsection*{Aufgabe 2}
 \subsubsection*{a)}
-Um eine Menge $H$ in polynomieller Zeit als Hitting Set zu verifizieren wird $H$ als Zertifikat verwendet.
-Zunächst wird geprüft ob $|H|\le k$ gilt. Als nächstes wird geprüft, ob $|H|\subseteq A$ gilt und zum Schluss wird geprüft, ob $H \cap B_i \neq \emptyset$ für jedes $i \in {1,...,m}$ gilt.
+Um eine Menge $H$ in polynomieller Zeit als Hitting Set zu verifizieren, wird $H$ als Zertifikat verwendet.
+Zunächst wird geprüft ob $|H|\le k$ gilt. Als nächstes wird geprüft, ob $H \subseteq A$ gilt und zum Schluss wird geprüft, ob $H \cap B_i \neq \emptyset$ für jedes $i \in {1,\dots,m}$ gilt.
 Diese drei Prüfungen liegen in polynomieller Laufzeit. Somit liegt Hitting Set in NP.
+
+
 
 \subsubsection*{b)}
 Vertex Cover
