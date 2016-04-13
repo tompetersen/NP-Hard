@@ -1,16 +1,21 @@
 \documentclass[12pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
+
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{color}
+\usepackage{enumerate}
+\usepackage{lineno}
 \usepackage{listings} 
- \definecolor{lightgrey}{rgb}{0.90,0.90,0.90}
+\definecolor{lightgrey}{rgb}{0.90,0.90,0.90}
 \lstset{language=Java, backgroundcolor=\color{lightgrey},  numbersep=5pt, tabsize=3}
- \usepackage{lineno}
-\title{Lösungsstrategien für NP-schwere Probleme\\Aufgabenblatt 01}
 
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+
+\title{Lösungsstrategien für NP-schwere Probleme\\Aufgabenblatt 01}
 \author{
 		Jakob Rieck\\
 		\small{6423721}
@@ -26,38 +31,51 @@
 }
 \date{Abgabe zum 18.04.16}
 
+
 \begin{document}
 
 \maketitle
 
 \subsection*{Aufgabe 1}
 
-\subsubsection*{a)}
-Zunächst formulieren wir das 4D-Matching-Problem:\\
-\textbf{Eingabe:} Disjunkte Mengen $A$, $B$, $C$ und $D$ mit $|A| = |B| = |C| = |D| = n$ sowie eine Menge $T \subseteq A \times B \times C \times D$ von Tripeln.\\
-\textbf{Frage:} Gibt es eine Menge von $n$ Tripeln in $T$, sodass jedes Element aus $A \cup B \cup C \cup D$ in genau einem dieser Tripel vorkommt?
-\\\\
-Nun zeigen wir, dass 4D-Matching in NP liegt. Dazu muss gezeigt werden, dass ein perfektes Matching in polynomieller Zeit verifiziert werden kann. Dies ist möglich, indem geprüft wird, ob jedes Element genau einmal in der Tupelmenge auftaucht.
+\begin{enumerate}[a)]
 
-Nun zeigen wir, dass das 4D-Matching-Problem NP-vollständig ist, also dass 3D-Matching $\leq_p$ 4D-Matching gilt. Wir reduzieren dazu das 3D-Matching-Problem auf das 4D-Matching-Problem. Wir zeigen nun eine Konstruktion, welche ein korrektes Matching in 3D auf ein korrektes Matching in 4D, sowie ein falsches Matching in 3D auf ein falsches Matching in 4D abbildet. Dazu verbinden wir die Mengen $C$ und $D$ mithilfe einer bijektiven Abbildung. Man könnte zum Beispiel die Elemente der beiden Mengen jeweils nach einem bestimmten Kriterium sortieren und dann die jeweils $i$-ten Elemente in der Abbildung verbinden (für $i \in \{1,\dots,n\}$). Gegeben sei nun ein perfektes 3D-Matching für die Mengen $A$, $B$ und $C$. Alle Elemente der genannten Mengen sind also in genau einem Tupel enthalten. Nach unserer Konstruktion eines 4D-Matchings ist wegen der Bijektivität in dem Matching genau einmal jedes Element der Menge $D$ vorhanden. Ein falsches Matching in 3D trifft entweder nicht alle Elemente der Mengen $A$ oder $B$, oder nicht alle Elemente aus der Menge $C$ und damit auch der Menge $D$. Somit ist gezeigt, dass sich das 3D-Matching-Problem auf das 4D-Matching-Problem reduzieren lässt, was bedeutet, dass 4D-Matching NP-vollständig ist.
+	\item Zunächst formulieren wir das 4D-Matching-Problem:\\
+	\textbf{Eingabe:} Disjunkte Mengen $A$, $B$, $C$ und $D$ mit $|A| = |B| = |C| = |D| = n$ sowie eine Menge $T \subseteq A \times B \times C \times D$ von Tripeln.\\
+	\textbf{Frage:} Gibt es eine Menge von $n$ Tripeln in $T$, sodass jedes Element aus $A \cup B \cup C \cup D$ in genau einem dieser Tripel vorkommt?
+	
+	Nun zeigen wir, dass 4D-Matching in NP liegt. Dazu muss gezeigt werden, dass ein perfektes Matching in polynomieller Zeit verifiziert werden kann. Dies ist möglich, indem geprüft wird, ob jedes Element genau einmal in der Tupelmenge auftaucht.
+	
+	Nun zeigen wir, dass das 4D-Matching-Problem NP-vollständig ist, also dass 3D-Matching $\leq_p$ 4D-Matching gilt. Wir reduzieren dazu das 3D-Matching-Problem auf das 4D-Matching-Problem. Wir zeigen nun eine Konstruktion, welche ein korrektes Matching in 3D auf ein korrektes Matching in 4D, sowie ein falsches Matching in 3D auf ein falsches Matching in 4D abbildet. Dazu verbinden wir die Mengen $C$ und $D$ mithilfe einer bijektiven Abbildung. Man könnte zum Beispiel die Elemente der beiden Mengen jeweils nach einem bestimmten Kriterium sortieren und dann die jeweils $i$-ten Elemente in der Abbildung verbinden (für $i \in \{1,\dots,n\}$). Gegeben sei nun ein perfektes 3D-Matching für die Mengen $A$, $B$ und $C$. Alle Elemente der genannten Mengen sind also in genau einem Tupel enthalten. Nach unserer Konstruktion eines 4D-Matchings ist wegen der Bijektivität in dem Matching genau einmal jedes Element der Menge $D$ vorhanden. Ein falsches Matching in 3D trifft entweder nicht alle Elemente der Mengen $A$ oder $B$, oder nicht alle Elemente aus der Menge $C$ und damit auch der Menge $D$. Somit ist gezeigt, dass sich das 3D-Matching-Problem auf das 4D-Matching-Problem reduzieren lässt, was bedeutet, dass 4D-Matching NP-vollständig ist.
 
 
-\subsubsection*{b)}
-$k$-CLIQUE ist für jedes $2 < k < |V|$ NP-Vollständig. 
-\\\\
-Beweis: Zunächst zeigen wir wieder, dass das Problem in NP liegt. Ist eine k-elementige Menge von Knoten als Lösung gegeben, so kann einfach überprüft werden, ob zwischen jedem der gegebenen Knoten eine Kante existiert. Somit kann eine Lösung in polynomieller Zeit verifiziert werden.\\
-Nun wird eine Reduzierung vorgenommen. Hierzu kann $k$-Clique wie folgt auf Independent-Set reduziert werden. Zu jedem Graphen $G=(V,E)$ wird der komplementäre Graph $G^*=(V^*,E^*)$ erzeugt, wobei $V^*=V$ und $e \in E^*$ genau dann, wenn $e \notin E$ gilt. Anschließend wird auf dem Graphen $G^*$ Independent Set ausgeführt. Wenn nun eine unabhängige Menge der Größe $k$ in $G^*$ gefunden wird, muss es auch einen vollständigen Graphen der Größe $k$ in $G$ geben.
-Für $k=|V|$ wird geprüft, ob der Graph $G$ vollständig ist. Dies ist jedoch in $P$ möglich. Da nicht bekannt ist ob $P=NP$ gilt kann keine Aussage darüber getroffen werden, ob $k$-Clique auch für $k=|V|$ NP-vollständig ist. Ähnliches gilt für $k=2$. In diesem Fall wird geprüft, ob der Graph $G$ eine Kante enthält.
-Für $k=1$ ist die Antwort trivialerweise immer ja, denn jeder einzelne Knoten ist ein vollständiger Subgraph von $G$.
+	\item $k$-CLIQUE ist für jedes $2 < k < |V|$ NP-vollständig. 
+	
+	Beweis: Zunächst zeigen wir wieder, dass das Problem in NP liegt. Ist eine k-elementige Menge von Knoten als Lösung gegeben, so kann einfach überprüft werden, ob zwischen jedem der gegebenen Knoten eine Kante existiert. Somit kann eine Lösung in polynomieller Zeit verifiziert werden.\\
+	Nun wird eine Reduzierung vorgenommen. Hierzu kann $k$-Clique wie folgt auf Independent-Set reduziert werden. Zu jedem Graphen $G=(V,E)$ wird der komplementäre Graph $G^*=(V^*,E^*)$ erzeugt, wobei $V^*=V$ und $e \in E^*$ genau dann, wenn $e \notin E$ gilt. Anschließend wird auf dem Graphen $G^*$ Independent Set ausgeführt. Wenn nun eine unabhängige Menge der Größe $k$ in $G^*$ gefunden wird, muss es auch einen vollständigen Graphen der Größe $k$ in $G$ geben.
+	Für $k=|V|$ wird geprüft, ob der Graph $G$ vollständig ist. Dies ist jedoch in $P$ möglich. Da nicht bekannt ist ob $P=NP$ gilt kann keine Aussage darüber getroffen werden, ob $k$-Clique auch für $k=|V|$ NP-vollständig ist. Ähnliches gilt für $k=2$. In diesem Fall wird geprüft, ob der Graph $G$ eine Kante enthält.
+	Für $k=1$ ist die Antwort trivialerweise immer ja, denn jeder einzelne Knoten ist ein vollständiger Subgraph von $G$.
+
+\end{enumerate}
 
 \subsection*{Aufgabe 2}
-\subsubsection*{a)}
-Um eine Menge $H$ in polynomieller Zeit als Hitting Set zu verifizieren, wird $H$ als Zertifikat verwendet.
-Zunächst wird geprüft ob $|H|\le k$ gilt. Als nächstes wird geprüft, ob $H \subseteq A$ gilt und zum Schluss wird geprüft, ob $H \cap B_i \neq \emptyset$ für jedes $i \in {1,\dots,m}$ gilt.
-Diese drei Prüfungen liegen in polynomieller Laufzeit. Somit liegt Hitting Set in NP.
 
+\begin{enumerate}[a)]
 
+	\item Um eine Menge $H$ in polynomieller Zeit als Hitting Set zu verifizieren, wird $H$ als Zertifikat verwendet.
+	Zunächst wird geprüft ob $|H|\le k$ gilt. Als nächstes wird geprüft, ob $H \subseteq A$ gilt und zum Schluss wird geprüft, ob $H \cap B_i \neq \emptyset$ für jedes $i \in {1,\dots,m}$ gilt.
+	Diese drei Prüfungen liegen in polynomieller Laufzeit. Somit liegt Hitting Set in NP.
+	
+	Im Folgenden wird nun die Reduktion 3-SAT \(\le_p\) HITTING SET beschrieben. Sei \(\Phi\) eine Instanz von 3-SAT mit den Klauseln \(C_1, \dots, C_m\) bestehend aus den Literalen \(x_1, \dots, x_n\) bzw. deren negierten Formen.
+	
+	Diese Instanz lässt sich nun folgendermaßen auf HITTING SET reduzieren: Die Grundmenge \(A = \{x_1, \overline{x_1}, \dots, x_n, \overline{x_n}\}\) besteht aus allen möglichen Literalen in positiver und negativer Form. Für jede Klausel \(C_i = (x_{i1} \lor x_{i2} \lor x_{i3})\) wird eine Menge \(B_i = \{x_{i1}, x_{i2}, x_{i3}\}\) hinzugefügt (mit \(x_{i}\) seien hier sowohl positive als auch negative Literale beschrieben). Zusätzlich wird für jedes Literal \(x_j\) eine Menge \(B_j = \{x_j, \overline{x_j}\}\) hinzugefügt. Für \(k = \frac{|A|}{2}\) ergibt sich so eine Instanz von HITTING SET, für die gilt: Die konstruierte Instanz besitzt ein HITTING SET genau dann, wenn \(\Phi\) erfüllbar ist.
+	
+	Beweis "\(\rightarrow\)": TBD
+	
+	Beweis "\(\leftarrow\)": Wenn \(\Phi\) erfüllbar ist, so gibt es eine Belegung, die mindestens ein \(x_i\) jeder Klausel zu wahr auswertet. Außerdem ist jedes \(x_i\) ent-weder mit wahr oder falsch belegt. Wählt man nun in der entsprechend konstruierten HITTING SET-Instanz \(H\) als die Menge aller \(x_i\), die zu wahr ausgewertet werden (wiederum seien hier auch negative Literale gemeint), so erhält man mit \(H\) ein HITTING SET, denn jede Menge \(B_j\), die aus einer Klausel gebildet wurde, enthält mindestens ein \(x_i\) aus \(H\), da \(\Phi\) erfüllbar ist. Außerdem wird auch jede Menge \(B_j = \{x_j, \overline{x_j}\}\) von genau einem Element aus \(H\) "getroffen", da entweder \(x_j\) oder \(\overline{x_j}\) wahr ist. Da \(\Phi\) eine vollständige Belegung für alle Literale (positive und negative) ist und \(H\) alle wahren Literale enthält, gilt außerdem \(|H| = \frac{|A|}{2}\).
 
-\subsubsection*{b)}
-Vertex Cover
+	\item Vertex Cover
+
+\end{enumerate}
+
 \end{document}
