@@ -74,7 +74,16 @@
 	
 	\textbf{Beweis "\(\leftarrow\)"}: Wenn \(\Phi\) erfüllbar ist, so gibt es eine Belegung, die mindestens ein \(x_i\) jeder Klausel zu wahr auswertet. Außerdem ist jedes \(x_i\) ent-weder mit wahr oder falsch belegt. Wählt man nun in der entsprechend konstruierten HITTING SET-Instanz \(H\) als die Menge aller \(x_i\), die zu wahr ausgewertet werden (wiederum seien hier auch negative Literale gemeint), so erhält man mit \(H\) ein HITTING SET, denn jede Menge \(B_j\), die aus einer Klausel gebildet wurde, enthält mindestens ein \(x_i\) aus \(H\), da \(\Phi\) erfüllbar ist. Außerdem wird auch jede Menge \(B_j = \{x_j, \overline{x_j}\}\) von genau einem Element aus \(H\) "getroffen", da entweder \(x_j\) oder \(\overline{x_j}\) wahr ist. Da \(\Phi\) eine vollständige Belegung für alle Literale (positive und negative) ist und \(H\) alle wahren Literale enthält, gilt außerdem \(|H| = \frac{|A|}{2}\).
 
-	\item Vertex Cover
+	\item Wir zeigen: \texttt{VERTEX COVER} $\leq_p$ \texttt{HITTING SET}
+	Gegeben sei eine Eingabe für \texttt{VERTEX COVER}, also $G = (V, E)$ und $k \geq 1$.
+	
+	Wir konstruieren Mengen $B_1, ..., B_m$ als $B_i = \{u, v\} \forall e \in E$, d.h. für jede Kante des ursprünglichen Graphen gibt es genau eine Menge ($m = |E|$).
+	
+	Zu zeigen ist nun: Lösung für \texttt{VERTEX COVER} $\Rightarrow$ Lösung für \texttt{HITTING SET}.
+	Es liege eine Knotenüberdeckung $S$ vor, d.h. $\forall (u, v) \in E$ gilt: $u \in V$ oder $v \in V$ und $|S| \leq k$. Da entweder $u$ oder $v$ in $V$ vorkommt, gilt auch $S \cap B_i \neq \emptyset$, den für jede Kante ($\rightarrow$ jede Menge $B_i$) wird ein Element getroffen. $S$ ist also auch gleichzeitig das gesuchte \texttt{HITTING SET} $H$ mit $|S| = |H| \leq k$ Elementen.
+	
+	Außerdem zu zeigen ist: Lösung für \texttt{HITTING SET} $\Rightarrow$ Lösung für \texttt{VERTEX COVER}
+	Eine Lösung $H$ mit $|H| \leq k$ ist eine Menge, für die gilt: $H \cap B_i \neq \emptyset$. Also gilt für jede Kante $(u, v) \in E : (u \in H)$ oder $(v \in H)$ (Schließlich waren die Mengen $B_i$ nichts weiter als die 2 Knoten jeder Kante) Damit wird jede Kante aus $E$ ``getroffen'', $H$ ist also auch eine Knotenüberdeckung $\blacksquare$.
 
 \end{enumerate}
 
