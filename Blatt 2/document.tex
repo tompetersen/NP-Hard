@@ -1,0 +1,67 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{lineno}
+\usepackage{listings} 
+\definecolor{lightgrey}{rgb}{0.90,0.90,0.90}
+\lstset{language=Java, backgroundcolor=\color{lightgrey},  numbersep=5pt, tabsize=3}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+
+\title{Lösungsstrategien für NP-schwere Probleme\\Aufgabenblatt 01}
+\author{
+		Jakob Rieck\\
+		\small{6423721}
+	\and
+		Konstantin Kobs\\
+		\small{6414943}
+	\and
+		Thomas Maier\\
+		\small{6319878}
+	\and
+		Tom Petersen\\
+		\small{6359640}
+}
+\date{Abgabe zum 18.04.16}
+
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Aufgabe 1}
+
+ \begin{enumerate}[a)]
+ 	\item in NP
+ 	\item Zu jedem Prozess $P_i$ betrachte man die Menge $Res_i$ welche alle Ressourcen beinhaltet, die $P_i$ benötigt um aktiv zu werden. Nun sucht man sich ein $i$ und ein $j$, für das gilt $i \neq j$ und $Res_i \cap Res_j =\emptyset$. Dies ist in polynomieller Laufzeit möglich. Hat man ein solches $i$ und $j$ gefunden, so hat man auch zwei Prozesse ($P_i$ und $P_j$) gefunden, die gleichzeitig aktiviert werden können. 
+ 	
+ 	\item Dieser Spezialfall kann auf ein Flussnetzwerk abgebildet werden. Wird ein Fluss der größe $k$ entdeckt, gibt es auch $k$ Prozesse, die gleichzeitig gestartet werden können. Als Knoten betrachten wir die Prozesse, Personen und Ausrüstungsgegenstände. Zusätzlich haben wir eine Quelle $s$ und eine Senke $t$. Jede Person hat eine Kante zur Senke und jedes Ausrüstungsgegenstand hat eine Kante zur Quelle. Zusätzlich hat jeder Prozess je eine Kante zu der Person und eine zu dem Ausrüstungsgegenstand, welche benötigt werden damit dieser aktiviert wird. Alle Kanten haben eine Kapazitätsbeschränkung von $1$. So kann verhindert werden, dass ein Fluss von zwei Ausrüstungsgegenständen in einen Prozess fließt oder von einem Prozess in zwei Personen. Jeder Pfad von $s$ nach $t$ fließt durch genau einen Ausrüstungsgegenstand, einen Prozess und einer Person. Jeder dieser Pfade erhöht den Fluss um $1$. Bei einem Fluss von $k$ gibt es also $k$ Prozesse die gleichzeitig aktiv sein können. Hierbei handelt es sich um alle Prozesse durch die der Fluss fließt.  
+ 	\item %Wahrscheinlich auch in NP. Ansatz: Betrachtet man die Prozesse und Ressourcen in einem Graphen, kann man alle Ressourcen, die maximal einem Prozess zugeordnet sind ignorieren. Lediglich die Ressourcen mit zwei Prozessen sind entscheidend, da nur diese verhindern könnten, dass zwei Prozesse zur gleichen Zeit gestartet werden.
+\end{enumerate}
+\subsection*{Aufgabe 2}
+
+\begin{enumerate}[a)] 
+	
+	\item Gegeben sei eine $3-SAT$ Formel $F$. Wir werden nun diese Formel in ein $SET-SPLITTING$ Problem überführen. Die Idee ist dabei die folgende: Jedes Element der Klasse $S_1$ wird auf true (bzw. false) und jedes Element der Klasse $S_2$ wird auf false (bzw. true) gesetzt, damit dass $3-SAT$ Problem gelöst werden kann. 
+	
+	Für jede in $F$ vorkommende Variable $x_i$, werden $x_i$ und $\bar{x_i}$ als Element der Menge $S$ und die Menge \{$x_i, \bar{x_i}$\} der Menge $C$ hinzugefügt. Somit soll verhindert werden, dass $x_i$ und $\bar{x_i}$ beide in der gleichen Klasse landen und somit als true interpretiert werden können. Neben den Literalen von $F$, wird noch ein weiteres Element $f$ der Menge $S$ hinzugefügt. Dieses Element liegt in der Klasse, welche auch die Literale von $F$ enthält, die als false interpretiert werden.
+	
+	Nun bildet jede Klausel mit ihren drei Literalen und dem Element $f$ je eine 4-elementige Teilmenge, welche der Menge $C$ hinzugefügt wird.  
+	
+	Sei $F$ nun erfüllbar, dann gehören die Literale aus $F$, welche true sind, zu der Klasse $S_1$ und die Literale aus $F$, welche false sind, der Klasse $S_2$. $S_2$ enthält zusätzlich noch das Element $f$. 
+	
+	Wenn eine Klausel in $F$ existiert, dessen Literale alle true sind, würde es ohne das Element $f$ eine Teilmenge geben, die vollständig in $S_1$ liegen würde. Damit dies verhindert wird, wurde das Element $f$ eingeführt.
+	
+	Umgekehrt gilt, Wenn wir eine Zerlegung von $S$ in zwei Klassen gefunden haben, definieren wir die Elemente der Klasse, welche das Element $f$ beinhaltet als false und die Elemente der anderen Klasse entsprechend als true.
+	
+	\item 
+\end{enumerate}
+
+\end{document}
