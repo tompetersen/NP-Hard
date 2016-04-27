@@ -1,0 +1,71 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{lineno}
+\usepackage{listings} 
+\definecolor{lightgrey}{rgb}{0.90,0.90,0.90}
+\lstset{language=Java, backgroundcolor=\color{lightgrey},  numbersep=5pt, tabsize=3}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+
+\title{Lösungsstrategien für NP-schwere Probleme\\Blatt 3}
+\author{
+		Jakob Rieck\\
+		\small{6423721}
+	\and
+		Konstantin Kobs\\
+		\small{6414943}
+	\and
+		Thomas Maier\\
+		\small{6319878}
+	\and
+		Tom Petersen\\
+		\small{6359640}
+}
+\date{Abgabe zum 02.05.16}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 1}
+
+ \begin{enumerate}[a)]
+
+ 	\item 
+
+	\item
+
+	\item 
+
+\end{enumerate}
+
+\section*{Aufgabe 2}
+
+\begin{enumerate}[a)] 
+	
+	\item Damit alle Kanten inzident zu einem Knoten der Überdeckung \(C\) sind, muss für alle \(v \in D\) gelten: entweder \(v \in C\) oder \(\forall u \in N(v): u \in D\). Da die Schranke der Knotenüberdeckung \(k < d(v) \forall v \in D\) ist, muss \textbf{\(v \in C\)} gelten, da sonst alle Nachbarn von \(v\) aufgenommen werden müssten und \(|N(v)| = d(v) > k\) gilt. 
+
+	Folglich müssen alle Knoten \(v \in D\) auch Teil einer Knotenüberdeckung sein. Gilt nun \(|D| > k\), dann müsste jede mögliche Knotenüberdeckung mehr als \(k\) Knoten enthalten. Daher kann es keine solche für die Schranke \(k\) geben.
+
+	\item Wie in Teilaufgabe a) gezeigt wurde, gilt \(v \in D \rightarrow v \in C\) für jede Knotenüberdeckung \(C\). Diese Knoten kann man nun aus dem Graphen entfernen, da sie auf jeden Fall in der Knotenüberdeckung enthalten sein  und daher nicht weiter betrachtet werden müssen. Entsprechendes gilt für zu ihnen inzidente Kanten, da diese auf jeden Fall überdeckt sind. Der so entstandene Graph kann isolierte Knoten enthalten, die jedoch ebenfalls nicht weiter betrachtet werden müssen, da sie in keiner möglichen Knotenüberdeckung enthalten sein müssen (alle ihre Kanten wurden schon von Knoten aus \(D\) überdeckt). Daher können sie auch entfernt werden. 
+
+	Der so entstandene Graph \(G'\) enthält also alle noch nicht überdeckten Kanten. Genau dann, wenn in ihm eine Knotenüberdeckung \(C'\) mit maximal \(k' = k - |D|\) gefunden werden kann, dann existiert auch für den Graphen \(G\) eine Knotenüberdeckung \(C = C' \cup D\), da durch diese wie gesehen alle Kanten überdeckt werden.
+
+	\item Damit \(G\) eine Knotenüberdeckung der Größe max. \(k\) haben kann, muss wie gezeigt eine Knotenüberdeckung von \(G'\) mit maximal \(k'\) Knoten existieren. Der maximale Grad dieser Knoten ist \(k\) bedingt durch die Konstruktion von \(G'\). Daher können so maximal \(k' + k' * k = k'*(k+1)\) Knoten inzident zu überdeckten Kanten in einer beliebigen Knotenüberdeckung sein. Enthält der Graph \(G'\) mehr als \(k'*(k+1)\) Knoten, so müssen Knoten existieren, die inzident zu nicht überdeckten Kanten sind. Dann existiert keine Knotenüberdeckung von \(G'\) und folglich auch keine von \(G\).
+
+	\item Die Laufzeit des Preprocessings liegt in \(\mathcal{O}(|G|)\): Im 1. Schritt werden alle Knoten durchlaufen und deren Grad bestimmt (\(\mathcal{O}(|G|)\) bei der Verwendung von Adjazenzlisten) und anschließend alle Knoten mit Grad größer \(k\) und inzidente Kanten gelöscht (ebenfalls einmaliges Durchlaufen und damit ebenfalls in \(\mathcal{O}(|G|)\)). Im 2. Schritt werden die Knoten von dem entstandenen Graphen gezählt, was offensichtlich ebenfalls in \(\mathcal{O}(|G|)\) liegt. Damit ergibt sich auch eine Gesamtlaufzeit von \(\mathcal{O}(|G|)\) für das Preprocessing.
+
+	Die Laufzeit von Schritt 3 liegt in \(\mathcal{O}(2^k k^2)\): \textbf{TBD}
+
+\end{enumerate}
+
+\end{document}
