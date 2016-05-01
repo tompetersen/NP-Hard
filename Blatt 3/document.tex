@@ -40,9 +40,17 @@
 
  \begin{enumerate}[a)]
 
- 	\item 
+ 	\item Wir erstellen eine Tabelle, welche an der linken Seite die Teilmengen $B_i$ und an der oberen Seite die Elemente $a_j \in A$ stehen hat. Nun füllen wir die Tabelle aus, indem wir in einer Zelle $z_{i,j}$ eine Eins einfügen, wenn $a_j \in B_i$; sonst fügen wir eine Null ein. Zeilenweise addieren sich die Zahlen nun zu maximal $c$, da in jeder Teilmenge maximal $c$ Elemente vorkommen können. Spaltenweise addieren sich die Zahlen zu unterschiedlichen Summen. Dies nutzen wir nun. Da eine Spalten-Summe größer ist, wenn mehr Elemente dieses Element enthalten, ist es sinnvoll, dieses Element in das Hitting-Set einzufügen. Sei die größte Spalten-Summe nun in Spalte $i$ zu finden. Gibt es gleich-große Summen, so wird die mit dem kleineren Index gewählt (die Auswahl kann auch zufällig geschehen, allerdings ist der Algorithmus somit deterministisch). Nun wird die Spalte $i$ komplett aus der Tabelle gestrichen. Ebenfalls werden alle Zeilen, die in der Spalte $i$ eine Eins stehen hatten, gestrichen, denn die repräsentierten Teilmengen der Zeilen sind durch die Hinzunahme des Elements $a_i$ getroffen worden. Die Tabelle ist also um eine Spalte und eine maximale Anzahl von $m$ Zeilen kleiner geworden. Nun werden die Spalten-Summen erneut berechnet und das Element mit der größten Spalten-Summe in $H$ aufgenommen. Dieses Summieren und Löschen wird nun solange iteriert, bis eine der folgenden Bedingungen zutrifft:
+ 	
+ 		\begin{enumerate}[1.]
+ 			\item Es wurden $k$ Iterationen durchgeführt. Das Hitting-Set $H$ enthält somit $k$ Elemente. Da diese eine bestimmte Menge von Teilmengen $B_i$ treffen und theoretisch alle Teilmengen treffen sollen, muss überprüft werden, ob die Tabelle nach dem Streichen des letzten Elements und seinen getroffenen Teilmengen noch Zeilen enthält. Ist dies nicht der Fall, so sind alle Teilmengen mit dem Hitting-Set getroffen worden. Enthalt die Tabelle noch Zeilen, so wurden diese Teilmengen nicht getroffen und es gibt kein Hitting-Set mit maximal $k$ Elementen.
+ 			\item Es gibt keine Zeilen mehr, sodass keine Spalten-Summen mehr berechnet werden können. Dies bedeutet, dass es ein Hitting-Set mit weniger als $k$ Elementen gibt.
+ 			\item Es gibt keine Spalten mehr, was bedeutet, dass sich alle Elemente bereits im Hitting-Set befinden. Somit gab es von Anfang an weniger als $k$ Elemente in $A$, sodass ein Hitting-Set somit trivial ist.
+ 		\end{enumerate}
+ 		
+ 		Nach dem Abbruch der Iterationen wurde entweder ein Hitting-Set der Größe $k$ oder kleiner gefunden, oder es wurde festgestellt, dass es kein Hitting-Set mit dieser Größe geben kann.
 
-	\item
+	\item Zum Aufstellen der Tabelle, sowie zum Berechnen der Spalten-Summen wird jeweils $p(n,m) = \mathcal{O}(n \cdot m)$ Zeit benötigt. Das Streichen (technisch wohl ein Null-Setzen der Zellen in Zeilen und Spalten) braucht ebenfalls $p(n,m)$ Zeit. Das Streichen führen wir insgesamt maximal $\min(n,m,k)$-mal aus, wobei dies nach oben hin mit $f(k) = k$ abgeschätzt werden kann. Wir erhalten damit eine Gesamtlaufzeit von $\mathcal{O}(f(k) \cdot p(n,m)) = \mathcal{O}(k \cdot n \cdot m)$.
 
 	\item Das \textit{HITTING-SET}-Problem ist ein Spezialfall vom \textit{c-HITTING-SET}-Problem, nämlich dann, wenn $c \geq n$ gilt. Dann nämlich kann jede Teilmenge $B_i$ eine beliebige Teilmenge von $A$ sein. Da \textit{HITTING-SET} NP-vollständig ist, ist somit auch die Familie der schwereren Probleme, \textit{c-HITTING-SET}, NP-vollständig. 
 
