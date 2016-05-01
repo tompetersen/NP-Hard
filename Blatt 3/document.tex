@@ -70,10 +70,10 @@
 
 	\item Damit \(G\) eine Knotenüberdeckung der Größe max. \(k\) haben kann, muss wie gezeigt eine Knotenüberdeckung von \(G'\) mit maximal \(k'\) Knoten existieren. Der maximale Grad dieser Knoten ist \(k\) bedingt durch die Konstruktion von \(G'\). Daher können so maximal \(k' + k' * k = k'*(k+1)\) Knoten inzident zu überdeckten Kanten in einer beliebigen Knotenüberdeckung sein. Enthält der Graph \(G'\) mehr als \(k'*(k+1)\) Knoten, so müssen Knoten existieren, die inzident zu nicht überdeckten Kanten sind. Dann existiert keine Knotenüberdeckung von \(G'\) und folglich auch keine von \(G\).
 
-	\item Die Laufzeit des Preprocessings liegt in \(\mathcal{O}(|G|)\): Im 1. Schritt werden alle Knoten durchlaufen und deren Grad bestimmt (\(\mathcal{O}(|G|)\) bei der Verwendung von Adjazenzlisten) und anschließend alle Knoten mit Grad größer \(k\) und inzidente Kanten gelöscht (ebenfalls einmaliges Durchlaufen und damit ebenfalls in \(\mathcal{O}(|G|)\)). Im 2. Schritt werden die Knoten von dem entstandenen Graphen gezählt, was offensichtlich ebenfalls in \(\mathcal{O}(|G|)\) liegt. Damit ergibt sich auch eine Gesamtlaufzeit von \(\mathcal{O}(|G|)\) für das Preprocessing.
+	\item \textbf{Die Laufzeit des Preprocessings liegt in \(\mathcal{O}(|G|)\):} Im 1. Schritt werden alle Knoten durchlaufen und deren Grad bestimmt (\(\mathcal{O}(|G|)\) bei der Verwendung von Adjazenzlisten) und anschließend alle Knoten mit Grad größer \(k\) und inzidente Kanten gelöscht (ebenfalls einmaliges Durchlaufen und damit ebenfalls in \(\mathcal{O}(|G|)\)). Im 2. Schritt werden die Knoten von dem entstandenen Graphen gezählt, was offensichtlich ebenfalls in \(\mathcal{O}(|G|)\) liegt. Damit ergibt sich auch eine Gesamtlaufzeit von \(\mathcal{O}(|G|)\) für das Preprocessing.
 
-	Die Laufzeit von Schritt 3 liegt in \(\mathcal{O}(2^k k^2)\): \textbf{TBD}
+	\textbf{Die Laufzeit von Schritt 3 liegt in \(\mathcal{O}(2^k k^2)\):} In Kapitel 10.1. wurde ein Verfahren entwickelt, das in Laufzeit \(\mathcal{O}(2^kn)\) eine Knotenüberdeckung für \(n\) Knoten berechnet. Da durch das Preprocessing in Schritt 2 zugesichert wird, dass weniger als \(k'*(k+1)\) Knoten im zu betrachtenden Graphen \(G'\) existieren (also eine Knotenzahl die in \(\mathcal{O}(k^2)\) liegt), kann der Algorithmus eine Knotenüberdeckung in \(\mathcal{O}(2^k k^2)\) berechnen.
 
-\end{enumerate}
+\end{enumerate} 
 
 \end{document}
