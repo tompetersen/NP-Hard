@@ -66,8 +66,12 @@
 		Die Laufzeit des Algorithmus lässt sich aus dem Rekursionsbaum ablesen, denn für jeden Knoten dieses Baumes wird jeweils eine Überprüfung zur Belegung ausgeführt. Die Zeit, die zur Überprüfung der Erfüllbarkeit gebraucht wird, hängt von $n$ ab, da es $n$ verschiedene Klauseln gibt, und wir bezeichnen sie mit $p(n)$. Der Rekursionsbaum hat eine Tiefe von $d+1$, da die Wurzel des Baumes den Abstand $0$ zur Anfangsbelegung hat. In jedem Knoten innerhalb des Baumes wird die Funktion erneut dreimal aufgerufen. Dadurch ergibt sich in jeder Ebene $i$ ($i \in \{0,\dots,d\}$) eine Knotenanzahl von $3^i$, also insgesamt eine Summe von
 		$$\sum_{i=0}^d 3^i = \frac{1}{2}(3^{d+1} - 1)$$
 		womit wir bei einer Laufzeitschranke von
-		$$\mathcal{O}(p(n) \cdot 3^{d+1})$$
+		$$\mathcal{O}(p(n) \cdot 3^{d})$$
 		angekommen sind.
+		
+		\item Der optimierte Algorithmus wählt eine Belegung $\Phi_1$ fest und das Komplement dieser Belegung, $\Phi_2$, als weiteren Startpunkt des Algorithmus. Somit muss der Algorithmus jeweils Belegungen mit einem Abstand von maximal $d = \frac{n}{2}$ überprüfen. Das Umdrehen der Belegung ist von $n$ abhängig und kann innerhalb des $p(n)$ festgehalten werden. Wir starten den Algorithmus zwei mal, in der $\mathcal{O}$-Notation wird jedoch dieser Faktor nicht auftauchen. Wir erhalten
+			$$\mathcal{O}(p(n) \cdot 3^\frac{n}{2}) = \mathcal{O}(p(n) \cdot (\sqrt{3})^{n})$$
+			womit die gewünschte Laufzeit erreicht worden ist.
 \end{enumerate} 
 
 \end{document}
