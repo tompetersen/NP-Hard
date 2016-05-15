@@ -1,6 +1,6 @@
 \documentclass[12pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
-
+\usepackage{ngerman}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -61,8 +61,13 @@
 \section*{Aufgabe 2}
 
 \begin{enumerate}[a)] 
-	
-	\item ...
+	\item Zunächst sei gezeigt, dass der Algorithmus nur Lösungen überprüft, deren Abstand höchstens $d$ sind. Hier sei darauf zu achten, dass es sich beim Algorithmus um eine rekursive Definition handelt, welche das $d$ in jedem Schritt um $1$ reduziert und gleichzeitig den Abstand von $\Phi$ und $\Phi'$ um $1$ erhöht. Zusammen mit der Abbruchbedingung, dass $d=0$ gilt, betrachtet der Algorithmus nur Lösungen, die einen maximalen Abstand $d$ von der ursprünglichen Belegung $\Phi$ haben. Nun zeigen wir die Behauptung der Aufgabe in beide Richtungen: Wenn der Algorithmus "`yes"' ausgibt, dann gibt es eine erfüllende Belegung $\Phi'$. Diese Richtung ist einfach, da der Algorithmus für eine gegebene Belegung überprüft, ob diese alle Klauseln erfüllt. Nur wenn dies der Fall ist, so wird "`yes"' zurück gegeben. Nun die andere Richtung: Gibt es eine erfüllende Belegung mit maximalem Abstand $d$ um $\Phi$ herum, so wird vom Algorithmus "`yes"' ausgegeben. Wie schon oben erwähnt, wird mit jedem Rekursionsschritt der Abstand von der ursprünglichen Belegung um $1$ erhöht. Ein Rekursionsschritt wird nur dann ausgeführt, wenn mindestens eine Klausel nicht erfüllt ist, ansonsten wird "`yes"' ausgegeben. Da beim Rekusrionsaufruf jede mögliche neue Belegung getestet wird, die die aktuelle Belegung für die zunächst nicht erfüllte Klausel erfüllt, wird jede mögliche erfüllende Belegung in Betracht gezogen. Sollte also eine erfüllende Belegung im Umkreis von einer Distanz von $d$ um die ursprüngliche Belegung liegen, so wird diese dann auch gefunden.
+		
+		Die Laufzeit des Algorithmus lässt sich aus dem Rekursionsbaum ablesen, denn für jeden Knoten dieses Baumes wird jeweils eine Überprüfung zur Belegung ausgeführt. Die Zeit, die zur Überprüfung der Erfüllbarkeit gebraucht wird, hängt von $n$ ab, da es $n$ verschiedene Klauseln gibt, und wir bezeichnen sie mit $p(n)$. Der Rekursionsbaum hat eine Tiefe von $d+1$, da die Wurzel des Baumes den Abstand $0$ zur Anfangsbelegung hat. In jedem Knoten innerhalb des Baumes wird die Funktion erneut dreimal aufgerufen. Dadurch ergibt sich in jeder Ebene $i$ ($i \in \{0,\dots,d\}$) eine Knotenanzahl von $3^i$, also insgesamt eine Summe von
+		$$\sum_{i=0}^d 3^i = \frac{1}{2}(3^{d+1} - 1)$$
+		womit wir bei einer Laufzeitschranke von
+		$$\mathcal{O}(p(n) \cdot 3^{d+1})$$
+		angekommen sind.
 \end{enumerate} 
 
 \end{document}
