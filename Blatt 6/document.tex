@@ -1,0 +1,64 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{ngerman}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{lineno}
+\usepackage{listings} 
+\definecolor{lightgrey}{rgb}{0.90,0.90,0.90}
+\lstset{language=Java, backgroundcolor=\color{lightgrey},  numbersep=5pt, tabsize=3}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+
+\title{Lösungsstrategien für NP-schwere Probleme\\Blatt 6}
+\author{
+		Jakob Rieck\\
+		\small{6423721}
+	\and
+		Konstantin Kobs\\
+		\small{6414943}
+	\and
+		Thomas Maier\\
+		\small{6319878}
+	\and
+		Tom Petersen\\
+		\small{6359640}
+}
+\date{Abgabe zum 23.05.16}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 1}
+
+ \begin{enumerate}[a)]
+
+ 	\item Ein Beispiel, an dem leicht zu sehen ist, dass es sich bei dem beschriebenen Algorithmus um keinen \(2\)-Approximationsalgorithmus handelt, ist das folgende:\\	
+ 	 Es seien \(A = \{a_1, a_2\}\) mit \(a_1 = 1, a_2 = 3\) und \(B = 3\). Offensichtlich ist die optimale Lösung \(S = \{a_2\}\) mit der totalen Summe \(3\). Der Algorithmus in der vorgegebenen Form würde jedoch im ersten Schritt \(a_1\) zu \(S\) hinzufügen und dieses - da \(a_2\) nicht mehr hinzugenommen werden darf - als Lösung zurückliefern. 
+ 	 
+ 	 Für einen \(2\)-Approximationsalgorithmus müsste jedoch \(\frac{L^*}{L} \le 2\) gelten (da es sich um ein Maximierungsproblem handelt). Hier ergibt sich jedoch \(\frac{L^*}{L} = \frac{3}{1} > 2\). Damit handelt es sich bei dem Algorithmus um keinen \(2\)-Approximationsalgorithmus.
+ 	
+ 	\item Der Algorithmus sortiert im ersten Schritt die Menge \(A\) der Größe nach (Laufzeit in der Praxis \(\mathcal{O}(n \log n)\)). Anschließend wird der Algorithmus aus Teilaufgabe a) auf die sortierte Folge angewendet (Laufzeit \(\mathcal{O}(n)\)).
+ 	
+ 	Im Folgenden soll nun gezeigt werden, dass es sich bei dem Verfahren um einen \(2\)-Approximationsalgorithmus handelt.\\
+ 	Anfangselemente der sortierten Folge für die \(a_i > B\) gilt, können vernachlässigt werden, da sie in keinem Fall in der gesuchten Menge \(S\) auftreten können. 
+ 	
+ 	Betrachtet wird nun das erste zu \(S\) hinzugenommene Element \(a_b\).\\
+ 	Falls \(a_b \ge \frac{B}{2}\) gilt, so handelt es sich auf jeden Fall um einen \(2\)-Appro\-xi\-ma\-tions\-algorithmus, da \(\frac{L^*}{L} = \frac{B}{L} \le \frac{B}{\frac{B}{2}} = 2\).\\
+ 	Anderenfalls gilt \(a_b < \frac{B}{2}\). Dann kann in der Folge kein \(a_j\) mit \(\frac{B}{2} < a_j \le B\) existieren, da es ansonsten bereits vorher in \(S\) aufgenommen worden wäre. Anschließend können nun weitere Elemente \(a_k\) in \(S\) aufgenommen werden, wegen \(a_k \le a_b < \frac{B}{2}\). Wenn \(T\) irgendwann den Wert \(\frac{B}{2}\) überschreitet, so liegt wegen \(\frac{L^*}{L} = \frac{B}{L} \le \frac{B}{\frac{B}{2}} = 2\) ein \(2\)-Appro\-xi\-ma\-tions\-algorithmus vor. Findet dieses überschreiten nicht statt, so können alle Elemente aus \(A\) in \(S\) aufgenommen werden und die Lösung ist sogar optimal. 
+ 	
+ 	Insgesamt handelt es sich bei dem Verfahren also um einen \(2\)-Appro\-xi\-ma\-tions\-algorithmus.
+ 	
+ 	
+\end{enumerate}
+
+\section*{Aufgabe 2}
+
+\end{document}
