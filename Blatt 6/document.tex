@@ -51,8 +51,8 @@
  	Anfangselemente der sortierten Folge für die \(a_i > B\) gilt, können vernachlässigt werden, da sie in keinem Fall in der gesuchten Menge \(S\) auftreten können. 
  	
  	Betrachtet wird nun das erste zu \(S\) hinzugenommene Element \(a_b\).\\
- 	Falls \(a_b \ge \frac{B}{2}\) gilt, so handelt es sich auf jeden Fall um einen \(2\)-Appro\-xi\-ma\-tions\-algorithmus, da \(\frac{L^*}{L} = \frac{B}{L} \le \frac{B}{\frac{B}{2}} = 2\).\\
- 	Anderenfalls gilt \(a_b < \frac{B}{2}\). Dann kann in der Folge kein \(a_j\) mit \(\frac{B}{2} < a_j \le B\) existieren, da es ansonsten bereits vorher in \(S\) aufgenommen worden wäre. Anschließend können nun weitere Elemente \(a_k\) in \(S\) aufgenommen werden, wegen \(a_k \le a_b < \frac{B}{2}\). Wenn \(T\) irgendwann den Wert \(\frac{B}{2}\) überschreitet, so liegt wegen \(\frac{L^*}{L} = \frac{B}{L} \le \frac{B}{\frac{B}{2}} = 2\) ein \(2\)-Appro\-xi\-ma\-tions\-algorithmus vor. Findet dieses überschreiten nicht statt, so können alle Elemente aus \(A\) in \(S\) aufgenommen werden und die Lösung ist sogar optimal. 
+ 	Falls \(a_b \ge \frac{B}{2}\) gilt, so handelt es sich auf jeden Fall um einen \(2\)-Appro\-xi\-ma\-tions\-algorithmus, da \(\frac{L^*}{L} = \frac{B}{L} \le \frac{B}{\frac{B}{2}} = 2\) (\(B\) ist für das betrachtete Problem der Wert einer optimalen Lösung).\\
+ 	Anderenfalls gilt \(a_b < \frac{B}{2}\). Dann kann in der Folge kein \(a_j\) mit \(\frac{B}{2} < a_j \le B\) existieren, da es ansonsten bereits vorher in \(S\) aufgenommen worden wäre. Anschließend können nun weitere Elemente \(a_k\) in \(S\) aufgenommen werden, wegen \(a_k \le a_b < \frac{B}{2}\). Wenn \(T\) irgendwann den Wert \(\frac{B}{2}\) überschreitet, so liegt wegen \(\frac{L^*}{L} = \frac{B}{L} \le \frac{B}{\frac{B}{2}} = 2\) ein \(2\)-Appro\-xi\-ma\-tions\-algorithmus vor. Findet diese Überschreitung nicht statt, so können alle Elemente aus \(A\) in \(S\) aufgenommen werden und die gefundene Lösung ist sogar eine optimale. 
  	
  	Insgesamt handelt es sich bei dem Verfahren also um einen \(2\)-Appro\-xi\-ma\-tions\-algorithmus.
  	
