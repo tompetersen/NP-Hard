@@ -61,4 +61,22 @@
 
 \section*{Aufgabe 2}
 
+Berechnen wir zunächst für das Beispiel-Problem eine optimale Lösung. Dazu bilden wir den Durchschnitt der Gesamtlast für jede Maschine. Wir können hierbei den Satz von Gauss ("`kleiner Gauss"') anwenden und erhalten:
+
+\begin{align*}
+	L_{\text{gesamt}} &= 2 \cdot \sum_{i=m}^{2m-1}(i) + m\\
+	&= m \cdot (3m - 1) + m\\
+	&= 3m^2\\
+	L^* &= \frac{3m^2}{m} = 3m
+\end{align*}
+
+In der (möglicherweise gar nicht erreichbaren) optimalen Lösung hat also jede Maschine eine Last von $3m$.
+
+Nun betrachten wir Greedy-Balance mit LIF-Regel. Da die Jobs zunächst nach ihren Lasten sortiert werden, können wir uns zunächst nur $2m$ Jobs anschauen, wobei wir den kleinsten Job mit Last $m$ noch nicht betrachten. Während des Algorithmus werden nacheinander die Jobs zugeordnet. Da die Summe zweier Job-Lasten immer größer ist als eine einzelne Job-Last, werden zunächst alle Maschinen mit genau einem Job belegt. Weil die kleineren Jobs später hinzugefügt wurden, gibt es dort noch weniger Auslastungen, sodass die nächsten Jobs in der umgedrehten Reihenfolge auf die Maschinen verteilt werden. Somit besitzt jede Maschine nach den ersten $2m$ Jobs eine Last von $3m-1$. Der letzte Job mit Last $m$ muss nun einer Maschine zugeteilt werden. Somit hat diese Maschine eine Last von $(3m-1)+m = 4m-1$, was bedeutet, dass diese Maschine auch die größte Last aller Maschinen hat. $L_A$, die gefundene Lösung des Algorithmus, ist also $4m-1$. Der Quotient $\frac{L_A}{L^*}$ ist also
+
+$$\frac{L_A}{L^*} = \frac{4m-1}{3m} = \frac{4}{3} - \frac{1}{3m}$$
+
+was mit wachsendem $m$ gegen $\frac{4}{3} = \rho$ strebt. Damit ist gezeigt, dass $\frac{4}{3}$ die bestmögliche Gütegarantie für dieses Beispiel ist.
+
+
 \end{document}
