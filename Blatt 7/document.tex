@@ -1,0 +1,81 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{ngerman}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{lineno}
+\usepackage{listings} 
+\definecolor{lightgrey}{rgb}{0.90,0.90,0.90}
+\lstset{language=Java, backgroundcolor=\color{lightgrey},  numbersep=5pt, tabsize=3}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+
+\title{Lösungsstrategien für NP-schwere Probleme\\Blatt 7}
+\author{
+		Jakob Rieck\\
+		\small{6423721}
+	\and
+		Konstantin Kobs\\
+		\small{6414943}
+	\and
+		Thomas Maier\\
+		\small{6319878}
+	\and
+		Tom Petersen\\
+		\small{6359640}
+}
+\date{Abgabe zum 06.06.16}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 1}
+
+
+\section*{Aufgabe 2}
+
+ \begin{enumerate}[a)]
+ 	\item Dynamic Programming 1: Waagerecht ist das Gewicht aufgetragen; vertikal die Items; Einträge in der Tabelle sind die (summierten) Werte der Items.
+ 		
+ 		\begin{table}[hbt]
+  		\begin{tabular}{l|cccccccccc}
+  	 	 	4 & 0 & 2 & 2 & 3 & 3 & 3 & 5 & 7 & 7 & \underline{8} \\
+	    	3 & 0 & 2 & 2 & 3 & 3 & 3 & 5 & 7 & 7 & \underline{8} \\
+	    	2 & 0 & 0 & 1 & 1 & 1 & 1 & 5 & 5 & \underline{6} & \underline{6} \\
+	    	1 & 0 & 0 & 0 & 0 & 0 & 0 & \underline{5} & 5 & \underline{5} & 5 \\
+	    	0 & 0 & 0 & 0 & 0 & 0 & 0 & \underline{0} & 0 & 0 & 0 \\
+	    	\hline
+	    	  & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+  		\end{tabular}
+		\end{table}
+		
+		Die Tabelle zeigt, dass wir einen maximalen Wert von 8 erreichen können. Hierzu müssen wir die Items 1, 2 und 3 in den Rucksack packen.
+
+ 	
+ 	\item Dynamic Programming 2: Waagerecht ist der maximale Gesamtwert (11) aufgetragen; vertikal die Items; Einträge in der Tabelle sind die (summierten) Gewichte.
+ 		
+ 		\begin{table}[hbt]
+  		\begin{tabular}{l|cccccccccccc}
+  	 	 	4 & 0 & 1 & 1 & 3 & 6 & 6 & 7 & 7 & \underline{9} & 12 & 12 & 14\\
+	    	3 & 0 & 1 & 1 & 3 & 6 & 6 & 7 & 7 & \underline{9} & $\infty$ & $\infty$ & $\infty$\\
+	    	2 & 0 & 2 & 6 & 6 & 6 & 6 & \underline{8} & $\infty$ & \underline{$\infty$} & $\infty$ & $\infty$ & $\infty$\\
+	    	1 & 0 & 6 & 6 & 6 & 6 & \underline{6} & \underline{$\infty$} & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$\\
+	    	0 & 0 & $\infty$ & $\infty$ & $\infty$ & $\infty$ & \underline{$\infty$} & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$\\
+	    	\hline
+	    	  & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11\\
+  		\end{tabular}
+		\end{table}
+ 	 
+ 		Die Tabelle zeigt, dass wir ein Gewicht von maximal 9 erreichen, wobei wir einen Wert von 8 erreichen. Hierzu müssen, wie schon in \textit{a)}, Items 1, 2 und 3 hinzugefügt werden. Dies ist das gleiche Ergebnis wie in \textit{a)}, denn schließlich handelt es sich hier nur um zwei verschiedene Berechnungsweisen des gleichen Problems.
+ 	
+\end{enumerate}
+
+
+\end{document}
