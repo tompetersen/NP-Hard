@@ -38,6 +38,14 @@
 
 \section*{Aufgabe 1}
 
+Wir wenden die Pricing-Methode auf das gewichtete Hitting-Set-Problem an.\\
+Es sei \(B(a_i)\) die Familie von Mengen \(B_j\), in denen \(a_i\) enthalten ist. Jedes Element \(B_j\) erhält einen Preis \(p_j\), der im Laufe des Algorithmus berechnet wird. Weiterhin gelte folgende Fairness-Regel für alle Elemente \(a_i \in A\): 
+\[\sum_{B_j \in B(a_i)} p_j \le w_i\]
+Ein Element \(a_i \in A\) ist tight, wenn \[\sum_{B_j \in B(a_i)} p_j = w_i\] gilt. Der Algorithmus läuft nun solange noch Mengen \(B_j\), die ein nicht-tightes Element aus \(A\) enthalten, existieren und wählt eines dieser Elemente aus. Der Preis dieses Elements wird nun maximal erhöht, ohne die Fairness-Regel zu verletzen. Nach Beendigung der Schleife bilden alle tighten Elemente aus \(A\) ein Hitting Set.
+
+Die Schleife terminiert, da in jedem Schritt mindestens ein Element aus \(A\) tight gemacht wird und \(A\) endlich ist. Nachdem der Algorithmus beendet wurde, enthält jedes \(B_j\) mindestens ein tightes Element, das in das Hitting Set aufgenommen wird, daher arbeitet der Algorithmus auch korrekt.
+
+\textbf{TBD}: k-Approximation
 
 \section*{Aufgabe 2}
 
