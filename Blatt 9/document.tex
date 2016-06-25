@@ -46,6 +46,8 @@
 
 	\item Die absolute Differenz der beiden Auslastungen $|T_1 - T_2|$ wird mit jedem Tausch immer kleiner. Bei der Strategie mit dem größten Prozess, der von der höher ausgelasteten Maschine zur weniger ausgelasteten Maschine übertragen wird, wird immer der Prozess ausgewählt, der so groß wie möglich, aber immer noch kleiner als $|T_1 - T_2|$ ist, da sonst diese Differenz nicht verkleinert werden kann. Wird nun ein Prozess nach der Strategie ausgewählt und übertragen, so wird die absolute Differenz der beiden Auslastungen kleiner als die Größe des übertragenen Prozesses. Da in jedem Schritt die Differenz immer kleiner werden muss, gibt es somit keine Möglichkeit mehr, dass der ausgewählte Prozess erneut ausgewählt wird. $\square$
 		
+	\item Seien beide Maschinen mit folgenden Jobs $t_1, t_2, t_3, t_4$ initialisiert: Maschine 1 enthält die Prozesse $t_1 = 1, t_2 = 2, t_3 = 3$ und Maschine 2 den Prozess $t_4 = 3,99$. Somit ist also $T_1 = 6$ und $T_2 = 3,99$. Zum Verschieben kommen die Jobs $t_1$ und $t_2$ infrage, da $|T_1 - T_2| = 2,01$ ist und diese absolute Differenz durch Verschiebung von $t_1$ auf $0,01$ und durch Verschiebung von $t_2$ auf $1,99$ verringert werden kann. Die Regel aus b) besagt nun, dass der Prozess mit der größten Auslastung ausgewählt wird. Das ist in diesem Fall $t_2$, wobei jedoch $t_1$ einen sehr viel besseren Score liefert. Beide Schritte würden zu einer Lösung führen, die das Verschieben von Prozessen abbricht, jedoch führt der gewählte Schritt nicht zur optimalen Lösung.
+		
 \end{enumerate}
 
 
