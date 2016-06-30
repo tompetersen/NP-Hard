@@ -59,6 +59,21 @@ $$E[X] = 80000 \cdot \frac{99}{100} + 20000 \cdot \frac{1}{100} = 79400$$
 
 \section*{Aufgabe 2}
 
+\begin{enumerate}[a)]
+	\item Wenn ein Prozess einen Wert von 1 wählt, und gleichzeitig alle verbundenen Prozesse den Wert 0 haben, so kann der Prozess in die Menge $S$ aufgenommen werden. In der Menge $S$ befinden sich am Ende also nur Prozesse, die nicht im Konflikt zu ihren möglichen Konflikt-Partnern stehen, da alle diese nicht in die Menge aufgenommen wurden. $\square$\\
+		Die Wahrscheinlichkeit, dass ein Prozess $P$ den Wert 1 wählt, liegt bei $\frac{1}{2}$. Dieselbe Wahrscheinlichkeit hat auch jeder andere Prozess, der mit $P$ verbunden ist. Die Wahrscheinlichkeit, dass nun $P$ den Wert 1 hat \textbf{und} die $d$ mit ihm verbundenen Prozesse den Wert 0 liegt bei $\frac{1}{2} \cdot \frac{1}{2}^d$, da die beiden Ereignisse unabhängig voneinander und identisch verteilt sind (iid). Da dies nun die Wahrscheinlichkeit für ein Element ist, und es immer nur zwei Zustände gibt (in Set $S$ oder nicht), handelt es sich hier um eine Binomialverteilung, deren Erwartungswert wir dann einfach mit
+		$$\frac{1}{2} \cdot \frac{1}{2}^d \cdot n = \frac{1}{2}^{d+1} \cdot n$$
+		beschreiben können.
+
+	\item Die Wahrscheinlichkeitsberechnung ist hier ähnlich, nur etwas allgemeiner. Die Wahrscheinlichkeit für den Wert 1 ist $p$ und dass die in Konflikt stehenden Prozesse jeweils 0 sind, hat die Wahrscheinlichkeit $1-p$. Für die Gesamtwahrscheinlichkeit ergibt sich dann $p \cdot (1-p)^d$, sodass sich auch hier eine Binomialverteilung ergibt mit dem Erwartungswert
+		$$p \cdot (1-p)^d \cdot n$$
+		
+		TODO: Für welches $p$ ist das maximal? Ableiten ist schwierig.
+		
+\end{enumerate}
+
+
+
 
 
 \end{document}
