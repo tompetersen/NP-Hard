@@ -1,0 +1,64 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{ngerman}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{lineno}
+\usepackage{listings} 
+\definecolor{lightgrey}{rgb}{0.90,0.90,0.90}
+\lstset{language=Java, backgroundcolor=\color{lightgrey},  numbersep=5pt, tabsize=3}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+
+\title{Lösungsstrategien für NP-schwere Probleme\\Blatt 10}
+\author{
+		Jakob Rieck\\
+		\small{6423721}
+	\and
+		Konstantin Kobs\\
+		\small{6414943}
+	\and
+		Thomas Maier\\
+		\small{6319878}
+	\and
+		Tom Petersen\\
+		\small{6359640}
+}
+\date{Abgabe zum 04.07.16}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 1}
+
+Bei der Zufallsgröße handelt es sich um zwei voneinander unabhängige Zufallsverteilungen. Zum einen werden in die Zufallsgröße $X$ alle Stimmen der Leute gezählt, die für $D$ stimmen wollten und es auch taten. Dies geschieht mit Wahrscheinlichkeit $\frac{99}{100}$ bei allen 80000 $D$-Fans. Zum anderen beinhaltet $X$ aber auch die Stimmen der Leute, die $R$ wählen wollten, allerdings aufgrund der schlecht designten Wahlzettel $D$ wählten. Dies geschieht mit Wahrscheinlichkeit $\frac{1}{100}$ für die gegebenen 20000 $R$-Fans.
+
+Beide Wahrscheinlichkeitsverteilungen sind Binomialverteilungen, die zum einen ein $n=80000$ und zum anderen ein $n=20000$ sowie die oben genannten Wahrscheinlichkeiten $p=\frac{99}{100}$ sowie $p=\frac{1}{100}$ besitzen. Die Zufallsgröße $X$ wird nun beschrieben als
+
+$$X = Binom(80000, \frac{99}{100}) + Binom(20000, \frac{1}{100})$$
+
+Somit ist der Erwartungswert von $X$
+
+$$E[X] = E[Binom(80000, \frac{99}{100}) + Binom(20000, \frac{1}{100})]$$
+
+Wegen der Linearität des Erwartungswertes gilt dann
+
+$$E[X] = E[Binom(80000, \frac{99}{100})] + E[Binom(20000, \frac{1}{100})]$$
+
+Für Binomialverteilungen ist der Erwartungswert leicht zu berechnen ($n \cdot p$), weshalb der Erwartungswert folgendes ist:
+
+$$E[X] = 80000 \cdot \frac{99}{100} + 20000 \cdot \frac{1}{100} = 79400$$
+
+
+\section*{Aufgabe 2}
+
+
+
+\end{document}
