@@ -67,8 +67,18 @@ $$E[X] = 80000 \cdot \frac{99}{100} + 20000 \cdot \frac{1}{100} = 79400$$
 
 	\item Die Wahrscheinlichkeitsberechnung ist hier ähnlich, nur etwas allgemeiner. Die Wahrscheinlichkeit für den Wert 1 ist $p$ und dass die in Konflikt stehenden Prozesse jeweils 0 sind, hat die Wahrscheinlichkeit $1-p$. Für die Gesamtwahrscheinlichkeit ergibt sich dann $p \cdot (1-p)^d$, sodass sich auch hier eine Binomialverteilung ergibt mit dem Erwartungswert
 		$$p \cdot (1-p)^d \cdot n$$
-		
-		TODO: Für welches $p$ ist das maximal? Ableiten ist schwierig.
+		Nun ist das $p$ zu finden, welches diesen Erwartungswert maximiert. Dazu suchen wir die Extremstellen bezüglich $p$ und leiten dazu ab und setzen gleich Null. Wir erhalten
+		$$-n(1-p)^{d-1}(d \cdot p + p-1) = 0$$
+		Wir wissen, dass $n$ ungleich Null ist, sodass wir durch $-n$ teilen können:
+		$$(1-p)^{d-1}(d \cdot p + p-1) = 0$$
+		Damit diese Gleichung Null ist, gilt $(1-p)^{d-1} = 0$ oder	$d \cdot p + p-1 = 0 = (d+1) \cdot p -1$. Für die erste Gleichung erhalten wir $p=1$ und für die zweite Gleichung erhalten wir $p=\frac{1}{d+1}$. $p=1$ ist aber ein Minimum, da der Erwartungswert für dieses $p$ Null wäre.\\
+		$p=\frac{1}{d+1}$ ist somit das $p$, welches den Erwartungswert maximiert. Für den Erwartungswert mit diesem $p$ erhalten wir dann
+		\begin{align*}
+			E &= \frac{1}{d+1} \cdot \left(1 - \frac{1}{d+1}\right)^d \cdot n \\
+			&= \frac{1}{d+1} \cdot \left(\frac{d}{d+1}\right)^d \cdot n \\
+			&= \frac{1}{d+1} \cdot \frac{d^d}{(d+1)^d} \cdot n \\
+			&= \frac{d^d}{(d+1)^{d+1}} \cdot n \\
+		\end{align*}
 		
 \end{enumerate}
 
